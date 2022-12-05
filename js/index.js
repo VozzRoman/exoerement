@@ -37,7 +37,7 @@ function onAddTask() {
 function toDoMarkUp() {
 	const objecData = JSON.parse(localStorage.getItem(LOCAL__KEY));
 	todoListContainer.innerHTML = '';
-	 const elemnts = objecData.map(({ id, value, cls }, index) => {
+	 const elemnts = objecData.map(({ value, cls }, index) => {
 		 return `<li class="${cls}" data-taskId="${index}">${value}</li>`
 	 }).join('');
 	
@@ -51,7 +51,8 @@ todoListContainer.addEventListener('click', crossTask);
 function crossTask(e) {
 	if (e.target.className === 'listItem') {
 	console.log(e.target.dataset.taskid);
-	getIdCrossTask(e.target.dataset.taskid);
+		getIdCrossTask(e.target.dataset.taskid);
+		
 	}
 
 	
@@ -59,26 +60,29 @@ function crossTask(e) {
 }
 function getIdCrossTask(id) {
 	let data = JSON.parse(localStorage.getItem(LOCAL__KEY));
-	console.log(data[id]);
+	data[id].cls = 'list_done-task';
+	
+	localStorage.setItem(LOCAL__KEY, JSON.stringify(data));
+	toDoMarkUp();
 }
-// removeTask.addEventListener('click', onRemoveTask);
+removeTask.addEventListener('click', onRemoveTask);
 
-// function onRemoveTask() {
-// 	const getData = localStorage.getItem(LOCAL__KEY);
-// 	const arrayData = JSON.parse(getData);
-// 	console.log(arrayData);
-// 	// const filtered = arrayData.filter(item => item.cls === 'listItem');
-// 	// console.log(filtered);
-// 	// localStorage.setItem(LOCAL__KEY, JSON.stringify(filtered));
-// 	let newArray = [];
-// 	for (const item of arrayData) {
-// 		if (item.cls === 'listItem') {
-// 			newArray.push(item);
-// 		}
-// 		localStorage.setItem(LOCAL__KEY, JSON.stringify(newArray));
-// 	}
-// 		toDoMarkUp();
-// 	}
+function onRemoveTask() {
+	const getData = localStorage.getItem(LOCAL__KEY);
+	const arrayData = JSON.parse(getData);
+	console.log(arrayData);
+	// const filtered = arrayData.filter(item => item.cls === 'listItem');
+	// console.log(filtered);
+	// localStorage.setItem(LOCAL__KEY, JSON.stringify(filtered));
+	let newArray = [];
+	for (const item of arrayData) {
+		if (item.cls === 'listItem') {
+			newArray.push(item);
+		}
+		localStorage.setItem(LOCAL__KEY, JSON.stringify(newArray));
+	}
+		toDoMarkUp();
+	}
 	
 
 toDoMarkUp();
