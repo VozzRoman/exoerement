@@ -1,0 +1,44 @@
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.input-js {
+  display: inline-block;
+  height: 45px;
+  width: 300px;
+  font-size: 19px;
+  padding: 0 15px;
+}
+
+.box-red {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  background-color: red;
+  font-size: 19px;
+  color: white;
+}
+
+.box-green {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  background-color: green;
+  font-size: 19px;
+  color: white;
+}
+
+.list_done-task {
+  text-decoration: line-through;
+}
